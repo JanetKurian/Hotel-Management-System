@@ -1,0 +1,5 @@
+1 pasta 5 250
+2 burger 5 120
+3 noodles 5 250
+4 shake 5 250
+5 chicken-roll 5 150
