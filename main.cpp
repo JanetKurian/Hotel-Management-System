@@ -1,54 +1,46 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby,
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
 #include <iostream>
 using namespace std;
-int main()
-{
-	//std::cout<<"Hello World";
-	int quant;
-	int choice;
-	int Qrooms=0, Qpasta=0, Qburger=0, Qnoodles=0, Qshake=0, Qchicken=0;/// quant available
-	int Srooms=0, Spasta=0, Sburger=0, Snoodles=0, Sshake=0, Schicken=0;/// quant sold
-	int Total_rooms=0, Total_pasta=0, Total_burger=0, Total_noodles=0, Total_shake=0, Total_chicken=0;/// total price of each item
-	// list-> for the user
-	// first input the values
-	cout<<"\n\t Quantity of items we have ";
-	cout<<"\n Rooms available";
-	cin>>Qrooms;
-	cout<<"\n Qty pasta ";
-	cin>>Qpasta;
-	cout<<"\n Qty burger ";
-	cin>>Qburger;
-	cout<<"\n Qty noodles ";
-	cin>>Qnoodles;
-	cout<<"\n Qty shake ";
-	cin>>Qshake;
-	cout<<"\n Qty chicken-roll ";
-	cin>>Qchicken;
 
-	m:
-	cout<<"\n\t\t\t Please select from the menu";
-	cout<<"\n\n1) Rooms";
-	cout<<"\n\n2) Pasta";
-	cout<<"\n\n3) burger";
-	cout<<"\n\n4) noodles";
-	cout<<"\n\n5) shake";
-	cout<<"\n\n6) chicken-roll";
-	cout<<"\n\n7) Information regarding sales and collection";
-	cout<<"\n\n8) Exit";
+		int quant;
+		int choice;
+		int choice_order_food;
+		int Qrooms=0, Qpasta=0, Qburger=0, Qnoodles=0, Qshake=0, Qchicken=0;/// quant available
+		int Srooms=0, Spasta=0, Sburger=0, Snoodles=0, Sshake=0, Schicken=0;/// quant sold
+		int Total_rooms=0, Total_pasta=0, Total_burger=0, Total_noodles=0, Total_shake=0, Total_chicken=0;/// total price of each item
+		
+		
+void bookRoom() {
+	cout<<"\n\n Enter number of rooms you want";
+	cin>>quant;
+	if(Qrooms-Srooms>=quant) {
+		Srooms=Srooms+quant;
+		Total_rooms=Total_rooms+(quant*1200);
+		cout<<"\n\n\t\t"<<quant<<"room/rooms have been alloted to you";
+	} else
+		cout<<"\n\tOnly"<<Qrooms-Srooms<<"rooms remaining in hotel";
+}
 
-	cout<<"Please enter your choice";
-	cin>>choice;
-	switch(choice) {
+void orderFood() {
+	cout<<"\n\n Enter your food order";
+		cout<<"\n\n1) pasta";
+		cout<<"\n\n2) burger";
+		cout<<"\n\n3) noodles";
+		cout<<"\n\n4) shake";
+		cout<<"\n\n5) chicken-roll";
+
+	cin>>choice_order_food;
+	switch(choice_order_food) {
+
+
 	case 1:
-		cout<<"\n\n Enter number of rooms you want";
-		cin>>quant;
-		if(Qrooms-Srooms>=quant) {
-			Srooms=Srooms+quant;
-			Total_rooms=Total_rooms+(quant*1200);
-			cout<<"\n\n\t\t"<<quant<<"room/rooms have been alloted to you";
-		} else
-			cout<<"\n\tOnly"<<Qrooms-Srooms<<"rooms remaining in hotel";
-		break;
-	case 2:
 		cout<<"\n\n Enter Pasta Qty";
 		cin>>quant;
 		if(Qpasta-Spasta>=quant) {
@@ -58,7 +50,7 @@ int main()
 		} else
 			cout<<"\n\tOnly"<<Qpasta-Spasta<<" pasta remaining";
 		break;
-	case 3:
+	case 2:
 		cout<<"\n\n Enter burger Qty";
 		cin>>quant;
 		if(Qburger-Sburger>=quant) {
@@ -68,7 +60,7 @@ int main()
 		} else
 			cout<<"\n\tOnly"<<Qburger-Sburger<<" burger remaining";
 		break;
-	case 4:
+	case 3:
 		cout<<"\n\n Enter noodles Qty";
 		cin>>quant;
 		if(Qnoodles-Snoodles>=quant) {
@@ -79,7 +71,7 @@ int main()
 			cout<<"\n\tOnly"<<Qnoodles-Snoodles<<" noodles remaining";
 		break;
 
-	case 5:
+	case 4:
 		cout<<"\n\n Enter shake Qty";
 		cin>>quant;
 		if(Qshake-Sshake>=quant) {
@@ -90,7 +82,7 @@ int main()
 			cout<<"\n\tOnly"<<Qshake-Sshake<<" shake remaining";
 		break;
 
-	case 6:
+	case 5:
 		cout<<"\n\n Enter chicken-roll Qty";
 		cin>>quant;
 		if(Qchicken-Schicken>=quant) {
@@ -101,7 +93,12 @@ int main()
 			cout<<"\n\tOnly"<<Qchicken-Schicken<<" chicken-roll remaining";
 		break;
 
-	case 7:
+	default:
+		cout<<"Wrong Selection";
+	}
+}
+
+	void showReport() {
 		cout<<"\n\t\tDetails of sales and collection";
 		cout<<"\n\n Number of rooms we had:"<<Qrooms;
 		cout<<"\n\n Rooms gave for rent"<<Srooms;
@@ -114,7 +111,7 @@ int main()
 		cout<<"\n\n Total pasta collection"<<Total_pasta;
 
 		cout<<"\n\n Number of burger we had:"<<Qburger;
-		cout<<"\n\n pasta sold"<<Sburger;
+		cout<<"\n\n b sold"<<Sburger;
 		cout<<"\n\n Remaining burger"<<Qburger-Sburger;
 		cout<<"\n\n Total burger collection"<<Total_burger;
 
@@ -132,14 +129,72 @@ int main()
 		cout<<"\n\n chicken-roll sold"<<Schicken;
 		cout<<"\n\n Remaining chicken-roll"<<Qchicken-Schicken;
 		cout<<"\n\n Total chicken-roll collection"<<Total_chicken;
-		break;
-		case 8: 
-		    exit(0);
-		default:
-		    cout<<"\n Please select number mentioned above";
+	}
+	
+	void displayMenu() {
+		cout<<"\n\t\t\t Please select from the menu";
+		cout<<"\n\n1) Rooms";
+		cout<<"\n\n2) order Food";
+		cout<<"\n\n3) Information regarding sales and collection";
+		cout<<"\n\n4) Exit";
 
 	}
-	goto m;/// jump to tmnu after choice done
+
+	int main (){
+// 		//std::cout<<"Hello World";
+// 		int quant;
+// 		int choice;
+// 		int choice_order_food;
+// 		int Qrooms=0, Qpasta=0, Qburger=0, Qnoodles=0, Qshake=0, Qchicken=0;/// quant available
+// 		int Srooms=0, Spasta=0, Sburger=0, Snoodles=0, Sshake=0, Schicken=0;/// quant sold
+// 		int Total_rooms=0, Total_pasta=0, Total_burger=0, Total_noodles=0, Total_shake=0, Total_chicken=0;/// total price of each item
+		// list-> for the user
+		// first input the values
+		cout<<"\n\t Quantity of items we have ";
+		cout<<"\n Rooms available";
+		cin>>Qrooms;
+		cout<<"\n Qty pasta ";
+		cin>>Qpasta;
+		cout<<"\n Qty burger ";
+		cin>>Qburger;
+		cout<<"\n Qty noodles ";
+		cin>>Qnoodles;
+		cout<<"\n Qty shake ";
+		cin>>Qshake;
+		cout<<"\n Qty chicken-roll ";
+		cin>>Qchicken;
+
+
+
+	
+	//	goto m;/// jump to tmnu after choice done
+
+	while(true)
+	{
+		displayMenu();
+
+		cin >> choice;
+
+		switch(choice)
+		{
+		case 1:
+			bookRoom();
+
+			break;
+		case 2:
+			orderFood();
+			break;
+
+		case 3:
+			showReport();
+			break;
+		case 4:
+			exit(0);
+		default:
+			cout<<"\n Please select number mentioned above";
+
+		}
+	}
 
 	return 0;
 }
